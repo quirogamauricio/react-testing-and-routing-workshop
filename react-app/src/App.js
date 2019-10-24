@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends React.Component {
 
-export default App;
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      loggedIn: false,
+    };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin() {
+    this.setState({
+      loading: true,
+    })
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+        loggedIn: true,
+      });
+    }, 3000);
+  }
+
+  render() {
+    const content = this.state.loggedIn
+      ? <span data-testid='welcome-message'>Welcome</span>
+      : <button onClick={this.handleLogin} disabled={this.state.loading}>Login</button>;
+    return (
+      <React.Fragment>
+        <h1>Click the buttom below to log in</h1>
+        <br />
+        {content}
+      </React.Fragment>
+    );
+  }
+
+}
