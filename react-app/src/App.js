@@ -15,7 +15,7 @@ export default class App extends React.Component {
   handleLogin() {
     this.setState({
       loading: true,
-    })
+    });
     setTimeout(() => {
       this.setState({
         loading: false,
