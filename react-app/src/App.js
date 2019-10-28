@@ -30,7 +30,7 @@ export default class App extends React.Component {
       : <button onClick={this.handleLogin} disabled={this.state.loading}>Login</button>;
     return (
       <React.Fragment>
-        <h1>Click the buttom below to log in</h1>
+        <h1>Click the button below to log in</h1>
         <br />
         {content}
       </React.Fragment>
